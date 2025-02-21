@@ -23,7 +23,7 @@ describe('Adicionar livro ao carrinho de compras', () => {
     //como a única informação sobre o livro na adição que provavelmente não irá mudar facilmente é a imagem decicde colocar essa validação também
     cy.get("[id=add-to-cart-button]").click()
     cy.get("[id=sw-atc-details-single-container]").then(element => {
-      expect(element.text()).to.contains(bookData.data_cart.success_message)
+      expect(element.text()).to.contain(bookData.data_cart.success_message)
       cy.get(element.find("div > a > img")).should("have.attr", "src", "https://m.media-amazon.com/images/I/815KH9GjFTL._AC_AA300_.jpg")
     })
    })
