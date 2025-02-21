@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    environment {
+        // Define any environment variables here
+        CYPRESS_BASE_URL = 'qaia'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the repository
+                checkout scm
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // Install dependencies using npm
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Cypress Tests') {
+            steps {
+                // Run Cypress tests
+                sh 'npx cypress run'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Archive test results and screenshots
+            archiveArtifacts artifacts: 'cypress/screenshots/**, cypress/videos/**'
+        }
+        success {
+            // Notify success
+            echo 'Cypress tests passed!'
+        }
+        failure {
+            // Notify failure
+            echo 'Cypress tests failed!'
+        }
+    }
+}
