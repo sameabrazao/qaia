@@ -42,7 +42,10 @@ qaia/
 └── README.md
 
 
-### ▶ Instalação
+
+---
+
+## ▶ Instalação
 
 Clone o repositório:
 
