@@ -1,61 +1,109 @@
-# Pré requisitos
-- Node.js 18.17.0 ou superior (pode ser necessário a instalação do nvm para definir a versão)
-- npm (Node Package Manager) - geralmente instalado junto com o Node.js
+# QAIA – Automação E2E com Cypress
+Projeto de automação de testes end-to-end utilizando Cypress para validação de fluxo de compra em e-commerce.
+O objetivo é validar regras de negócio relacionadas à adição de produtos ao carrinho, disponibilidade de estoque e atualização correta da interface.
 
-# Dependências
-- npm install
+📌 Objetivo do Projeto
+- Automatizar cenários críticos do fluxo de compra, garantindo:
+- Integridade do processo de busca
+- Validação da página de produto
+- Confirmação de adição ao carrinho
+- Tratamento de cenários de falha (estoque esgotado)
 
-# Execução pelo terminar
-- npx cypress run
-
-# Execução com navegador
-- npx cypress open
-
-______________________________________________________________________________________________________________________________________________
-  # História do usuário:
-# Título: Adição de livro AI Engineering: Building Applications with Foundation Models ao Carrinho de Compras da Amazon
-Como um cliente da Amazon
-Eu quero adicionar o livro AI Engineering: Building Applications with Foundation Models ao meu carrinho de compras,
-Para que eu possa revisar o carrinho
-# Critérios de Aceitação:
-1. O cliente deve ser capaz de visualizar a página do produto com detalhes, como título, autor, edição, e idioma.
-2. O cliente deve ter um botão "Adicionar ao Carrinho" visível e acessível na página do produto.
-3. Ao clicar no botão "Adicionar ao Carrinho", uma mensagem de confirmação deve aparecer, informando que o produto foi adicionado com sucesso.
-4. O carrinho de compras deve ser atualizado automaticamente para refletir a nova adição, mostrando o número total de itens.
-# Notas:
-- O sistema deve garantir que o produto esteja disponível em estoque antes de permitir a adição ao carrinho.
+🛠 Tecnologias Utilizadas
+- Node.js 18+
+- npm
+- Cypress
+- JavaScript
+- Pipeline CI (Jenkinsfile)
 
 
-# Caso de teste: CT001
-Descrição: Verificar se o livro AI Engineering: Building Applications with Foundation Models foi adicionado ao carrinho de compras com sucesso.
-# Pré-condições:
-- O produto desejado deve estar disponível em estoque.
-# Passos para Execução:
-1. Abra o site da Amazon;
-2. Busque pelo livro AI Engineering: Building Applications with Foundation Models;
-3. Navegue até a página do produto;
-4. Clique no botão "Adicionar ao Carrinho".
-6. Aguardar a confirmação de que o produto foi adicionado.
-# Resultados Esperados:
-- O sistema deve exibir uma mensagem de confirmação informando que o produto foi adicionado ao carrinho.
-- O ícone do carrinho de compras deve ser atualizado para refletir a nova quantidade de itens.
-- O produto deve aparecer na lista de itens do carrinho de compras.
+# Estrutura do Projeto
+qaia/
+ ├── cypress/
+ │   ├── e2e/
+ │   ├── fixtures/
+ │   ├── support/
+ ├── cypress.config.js
+ ├── package.json
+ ├── Jenkinsfile
+ └── README.md
 
 
-# Caso de teste CT002
-Descrição: Falha na Adição de Livro ao Carrinho de Compras
-Objetivo: Verificar se o sistema lida corretamente com a tentativa de adicionar um livro ao carrinho quando o estoque está esgotado.
-# Pré-condições:
-- O livro que se deseja adicionar ao carrinho deve estar disponível no catálogo, mas com estoque esgotado.
-# Passos:
-1. Abra o site da Amazon;
-2. Navegar até a página do livro que está esgotado.
-3. Tentar adicionar o livro ao carrinho de compras clicando no botão "Adicionar ao Carrinho".
+▶ Instalação
+Clone o repostiório:
+  git clone https://github.com/sameabrazao/qaia.git
+
+Instale as dependências:
+  npm install
+
+▶ Execução dos Testes
+Execução em modo headless (CI):
+  npx cypress run
+Execução em modo gráfico:
+  npx cypress open
+
+📖 História do Usuário
+Título: Adição do livro AI Engineering: Building Applications with Foundation Models ao carrinho.
+Como cliente da Amazon
+Quero adicionar o livro ao carrinho
+Para revisar minha compra posteriormente
+
+✅ Critérios de Aceitação
+1- O cliente deve visualizar corretamente a página do produto (título, autor, edição, idioma).
+2- O botão "Adicionar ao Carrinho" deve estar visível e acessível.
+3- Após o clique, deve ser exibida mensagem de confirmação.
+4- O carrinho deve atualizar automaticamente a quantidade de itens.
+5- O sistema deve validar disponibilidade em estoque antes da adição.
+
+🧪 Casos de Teste Automatizados
+# CT001 – Adição com Sucesso
+# Objetivo:
+Validar que o livro é adicionado corretamente ao carrinho.
+# Pré-condição:
+Produto disponível em estoque.
+# Fluxo validado:
+1. Acessar o site
+2. Buscar o livro
+3. Navegar até a página do produto
+4. Clicar em "Adicionar ao Carrinho"
+# 5. Validar:
+  . Mensagem de confirmação
+  . Atualização do ícone do carrinho
+  . Produto listado no carrinho
 # Resultado Esperado:
-- O sistema deve exibir uma mensagem de erro informando que o livro não pode ser adicionado ao carrinho porque está esgotado.
-- O carrinho de compras não deve ser atualizado com o livro.
-# Notas:
-- Verificar se a mensagem de erro é clara e compreensível para o usuário.
-- Testar se o botão "Adicionar ao Carrinho" está desativado ou oculto quando o estoque está esgotado.
+Produto adicionado com sucesso e refletido na interface.
 
-  
+# CT002 – Produto Esgotado
+# Objetivo:
+Validar o comportamento do sistema quando o produto está sem estoque.
+# Pré-condição:
+Produto listado como indisponível.
+# Fluxo validado:
+1. Acessar a página do produto esgotado
+2. Tentar adicionar ao carrinho
+3. Validações:
+  . Exibição de mensagem de erro clara
+  . Carrinho não atualizado
+   . Botão desabilitado ou bloqueado
+# Resultado Esperado:
+Sistema impede a adição e informa indisponibilidade.
+
+
+🔎 Cobertura de Validação
+# Este projeto valida:
+  . Elementos visíveis em tela
+  . Interações do usuário
+  . Regras de negócio
+  . Estados de sucesso e falha
+  . Atualização dinâmica de interface
+
+🚀 Evoluções Futuras
+  . Implementação de Page Object Model (POM)
+  . Custom Commands no Cypress
+  . Integração com GitHub Actions
+  . Relatórios automatizados de execução
+  . Testes parametrizados
+
+👩‍💻 Autora
+# Sâmea Brazão
+QA com experiência em automação, validação de APIs, projetos de pagamentos digitais e blockchain.
