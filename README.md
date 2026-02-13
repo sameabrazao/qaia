@@ -27,17 +27,6 @@ Automatizar cenários críticos do fluxo de compra, garantindo:
 
 ---
 
-### Estrutura do Projeto
-
-```text
-.
-├── src
-│   ├── components
-│   │   └── Header.js
-│   └── utils
-├── docs
-└── README.md
-
 ## ▶ Instalação
 
 Clone o repositório:
