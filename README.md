@@ -27,7 +27,7 @@ Automatizar cenários críticos do fluxo de compra, garantindo:
 
 ---
 
-### 📂 Estrutura do Projeto
+## 📂 Estrutura do Projeto
 
 ```text
 .
