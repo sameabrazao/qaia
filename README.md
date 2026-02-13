@@ -41,7 +41,6 @@ qaia/
 ├── Jenkinsfile
 └── README.md
 
-
 ---
 
 ## ▶ Instalação
@@ -52,7 +51,6 @@ Clone o repositório:
 
 Instale as dependências:
  npm install
-
  
 ---
 
