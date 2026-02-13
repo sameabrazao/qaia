@@ -27,24 +27,6 @@ Automatizar cenários críticos do fluxo de compra, garantindo:
 
 ---
 
-## 📂 Estrutura do Projeto
-
-```text
-.
-qaia/
-├── cypress/
-│ ├── e2e/
-│ ├── fixtures/
-│ ├── support/
-├── cypress.config.js
-├── package.json
-├── Jenkinsfile
-└── README.md
-
-
-
----
-
 ## ▶ Instalação
 
 Clone o repositório:
