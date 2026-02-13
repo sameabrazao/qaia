@@ -41,9 +41,8 @@ qaia/
 ├── Jenkinsfile
 └── README.md
 
----
 
-## ▶ Instalação
+### ▶ Instalação
 
 Clone o repositório:
 
